@@ -1,89 +1,120 @@
-# Fakey Nails Salon Website
+﻿# Fakey Nails – Webbplats
 
-Stylish marketing site for a fictional nail salon. Crafted with modern
-web tools and editable via a headless CMS so the owner can change
-text, prices, services and images without touching code.
+En modern marknadsföringssajt för en fiktiv nagelsalong. Byggd med aktuella webbverktyg och kopplad till ett headless CMS så att ägaren kan uppdatera text, priser, tjänster och bilder utan att röra koden.
 
-----
+---
 
-## Features
+## Skärmdumpar
 
-- **Next.js 14 (app router)** & **TypeScript**
-- **Tailwind CSS** with custom OKLCH color palette and dark mode
-- Responsive layout: hero, service cards, price list and contact form
-- Theme switcher (light / dark / system) in the navbar
-- **Sanity CMS** integration for editable content (free tier)
-- Static generation with incremental revalidation (60 s)
-- Public `hero`, service and price images shipped via `public/`
+### Startsida
+![Startsida](public/mockups/landingpage.png)
 
-## Tech Stack
+### Desktop – ljust läge
+![Desktop ljust läge](public/mockups/fullpage-desktop-lightmode.png)
 
-| Purpose              | Technology                      |
-|---------------------|-------------------------------|
-| Framework           | Next.js 14 (React 18)          |
-| Styling             | Tailwind CSS + shadcn/ui
-| Icons               | lucide-react                  |
-| Forms / UI elements | shadcn/ui components          |
-| CMS                 | Sanity (studio at `/studio`)  |
-| Hosting             | Vercel recommended            |
+### Desktop – mörkt läge
+![Desktop mörkt läge](public/mockups/fullpage-desktop-darkmode.png)
 
-## 📝 Project Structure
+### Mobil
+<p align="center">
+  <img src="public/mockups/mobile-light.png" alt="Mobil ljust läge" width="45%" />
+  <img src="public/mockups/mobile-dark.png" alt="Mobil mörkt läge" width="45%" />
+</p>
+
+---
+
+## Funktioner
+
+- **Next.js 16 (App Router)** & **TypeScript**
+- **Tailwind CSS v4** med anpassad OKLCH-palett och mörkt läge
+- Responsiv layout: hero, tjänstekort, prislista, kontaktformulär och bokningssida
+- Temväxlare (ljust / mörkt / system) i navigeringen
+- **Sanity CMS** för redigerbart innehåll (gratisnivå)
+- Statisk generering med inkrementell revalidering (60 s)
+- Kontaktformulär med **react-hook-form** + **Nodemailer** via API-route
+
+## Teknikstack
+
+| Syfte           | Teknologi                       |
+|-----------------|---------------------------------|
+| Ramverk         | Next.js 16 (React 19)           |
+| Styling         | Tailwind CSS v4 + shadcn/ui     |
+| Ikoner          | lucide-react                    |
+| Formulär        | react-hook-form                 |
+| E-post          | Nodemailer (via `/api/contact`) |
+| CMS             | Sanity (studio på `/studio`)    |
+| Driftsättning   | Vercel (rekommenderat)          |
+
+## Projektstruktur
 
 ```
-app/               – Next.js pages/components
-  components/     – Hero, Navbar, ServiceCards, PriceCards, etc.
-public/            – Static assets (hero.webp, acrylic.webp …)
-sanity/            – Studio config, schemas, utility client
-  schemaTypes/     – Sanity document definitions
-  lib/             – Sanity client + image helper
-  env.ts           – env var helpers
+app/
+  components/     – Hero, Navbar, ServiceCards, PriceCards, Contact, Booking …
+  api/contact/    – API-route för kontaktformuläret (Nodemailer)
+  studio/         – Inbyggd Sanity Studio
+public/           – Statiska tillgångar (bilder m.m.)
+sanity/
+  schemaTypes/    – Sanity dokumenttyper
+  lib/            – Sanity-klient + bildhjälpare
+  env.ts          – Miljövariabelhjälpare
 ```
 
-## 💻 Local Development
+## Kom igång lokalt
 
-1. **Clone the repo** and install dependencies:
+1. **Klona repot** och installera beroenden:
    ```bash
    git clone https://github.com/knixan/fakey-nails.git
    cd fakey-nails
    npm install
    ```
-2. **Environment variables** – create `.env.local` with your Sanity
-   project settings (already included in this repo):
-   ```dotenv
-   NEXT_PUBLIC_SANITY_PROJECT_ID=<your id>
-   NEXT_PUBLIC_SANITY_DATASET=production
-   NEXT_PUBLIC_SANITY_API_VERSION=2026-03-01
-   ```
-3. **Run development servers**:
+
+2. **Miljövariabler** – skapa en `.env.local` i rooten (se exempel nedan).
+
+3. **Starta utvecklingsservern**:
    ```bash
-   npm run dev          # Next.js app
-   npm run studio       # Sanity Studio at http://localhost:3000/studio
+   npm run dev
    ```
-4. Open [http://localhost:3000](http://localhost:3000) to view the
-   website and [http://localhost:3000/studio](http://localhost:3000/studio)
-   to edit content.
 
-> The front-end queries Sanity every 60 seconds for updates, so content
-> changes appear almost immediately after publishing in the studio.
+4. Öppna [http://localhost:3000](http://localhost:3000) för sajten och
+   [http://localhost:3000/studio](http://localhost:3000/studio) för CMS-studion.
 
-## Editing Content
+> Frontenden hämtar nytt innehåll från Sanity var 60:e sekund, så publicerade ändringar syns nästan direkt.
 
-Use the Sanity Studio to adjust:
+## Miljövariabler – `.env.local`
 
-- Hero heading, subheading, description, call‑to‑action and background
-- List of services (title, description and optional image)
-- Categories and line items in the price list
+Skapa filen `.env` i projektets rot med följande variabler:
 
-New data is fetched on every build + periodically during runtime. If
-you want to pre-render with fresh data for a deploy, run `npm run
-build` again.
+```dotenv
+# Sanity
+NEXT_PUBLIC_SANITY_PROJECT_ID=ditt-projekt-id
+NEXT_PUBLIC_SANITY_DATASET=production
 
-## Deployment
+# SMTP-inställningar för kontaktformuläret exempel visas med https://ethereal.email/
+SMTP_HOST=smtp.ethereal.email
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=din@email.com
+SMTP_PASS=ditt-app-lösenord
 
-This repository is Vercel‑ready; just import the project and the
-platform will detect the Next.js framework.
+# E-postadress som tar emot formulärmeddelanden
+CONTACT_EMAIL=din@gmail.com
+```
 
-Be sure to set the same env vars in the Vercel dashboard. The Sanity
-Studio is served under `/studio` automatically because of the
-`basePath` config.
+> **Gmail-tips:** Använd ett *App Password* (inte ditt vanliga lösenord).
+> Aktivera det under Google-kontot → Säkerhet → Tvåstegsverifiering → App-lösenord.
 
+## Redigera innehåll
+
+Använd Sanity Studio för att ändra:
+
+- Hero-rubrik, underrubrik, beskrivning, CTA-knapp och bakgrundsbild
+- Tjänstekort (titel, beskrivning och valfri bild)
+- Kategorier och prisposter i prislistan
+
+Nytt innehåll hämtas vid varje bygge och löpande under körning. Kör `npm run build` för att generera med helt färskt innehåll inför en driftsättning.
+
+## Driftsättning
+
+Repot är Vercel-klart – importera projektet så identifieras Next.js-ramverket automatiskt.
+
+Lägg till samma miljövariabler i Vercel-dashboardens inställningar. Sanity Studio serveras automatiskt under `/studio` tack vare `basePath`-konfigurationen.
