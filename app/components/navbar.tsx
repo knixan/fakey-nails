@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -34,12 +35,15 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <Link
-          href="#hem"
-          className="font-heading text-2xl font-bold tracking-tight text-foreground"
-          onClick={closeMenu}
-        >
-          Fakey <span className="text-primary">Nails</span>
+        <Link href="#hem" className="flex items-center text-foreground" onClick={closeMenu}>
+          <Image
+            src="/loggo.png"
+            alt="Fakey Nails logga"
+            width={120}
+            height={32}
+            className="h-18 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop */}
