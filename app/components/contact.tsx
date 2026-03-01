@@ -12,12 +12,11 @@ export default function Contact() {
     <section id="kontakt" className="py-24 px-4 bg-background">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-primary mb-3">
-            Kontakta Oss
-          </p>
+        
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
-            Boka din tid idag
+            Kontakta oss
           </h2>
+            
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
