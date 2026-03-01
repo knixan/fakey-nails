@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { MapPin, Phone, Clock, Instagram } from "lucide-react";
-import { useState } from "react";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { MapPin, Phone, Clock, Instagram } from 'lucide-react';
+import { useState } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 
 type ContactFormValues = {
   name: string;
@@ -18,37 +18,35 @@ export default function Contact() {
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ContactFormValues>({
     defaultValues: {
-      name: "",
-      phone: "",
-      message: "",
+      name: '',
+      phone: '',
+      message: '',
     },
-    mode: "onTouched",
+    mode: 'onTouched',
   });
 
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<ContactFormValues> = async data => {
     setServerError(null);
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (!res.ok) {
         const json = await res.json();
-        throw new Error(json.error ?? "Något gick fel.");
+        throw new Error(json.error ?? 'Något gick fel.');
       }
       reset();
     } catch (err: unknown) {
-      setServerError(
-        err instanceof Error ? err.message : "Kunde inte skicka meddelandet."
-      );
+      setServerError(err instanceof Error ? err.message : 'Kunde inte skicka meddelandet.');
     }
   };
 
   const inputBase =
-    "w-full bg-card border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
+    'w-full bg-card border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring';
 
   return (
     <section id="kontakt" className="py-24 px-4 bg-background">
@@ -67,9 +65,7 @@ export default function Contact() {
                 <MapPin size={18} className="text-primary" />
               </div>
               <div>
-                <h4 className="font-heading text-lg font-semibold text-foreground">
-                  Adress
-                </h4>
+                <h4 className="font-heading text-lg font-semibold text-foreground">Adress</h4>
                 <p className="font-body text-sm text-muted-foreground">
                   Storgatan 12, 111 22 Stockholm
                 </p>
@@ -81,12 +77,8 @@ export default function Contact() {
                 <Phone size={18} className="text-primary" />
               </div>
               <div>
-                <h4 className="font-heading text-lg font-semibold text-foreground">
-                  Telefon
-                </h4>
-                <p className="font-body text-sm text-muted-foreground">
-                  08-123 456 78
-                </p>
+                <h4 className="font-heading text-lg font-semibold text-foreground">Telefon</h4>
+                <p className="font-body text-sm text-muted-foreground">08-123 456 78</p>
               </div>
             </div>
 
@@ -95,18 +87,10 @@ export default function Contact() {
                 <Clock size={18} className="text-primary" />
               </div>
               <div>
-                <h4 className="font-heading text-lg font-semibold text-foreground">
-                  Öppettider
-                </h4>
-                <p className="font-body text-sm text-muted-foreground">
-                  Mån–Fre: 10:00–19:00
-                </p>
-                <p className="font-body text-sm text-muted-foreground">
-                  Lör: 10:00–16:00
-                </p>
-                <p className="font-body text-sm text-muted-foreground">
-                  Sön: Stängt
-                </p>
+                <h4 className="font-heading text-lg font-semibold text-foreground">Öppettider</h4>
+                <p className="font-body text-sm text-muted-foreground">Mån–Fre: 10:00–19:00</p>
+                <p className="font-body text-sm text-muted-foreground">Lör: 10:00–16:00</p>
+                <p className="font-body text-sm text-muted-foreground">Sön: Stängt</p>
               </div>
             </div>
 
@@ -115,12 +99,8 @@ export default function Contact() {
                 <Instagram size={18} className="text-primary" />
               </div>
               <div>
-                <h4 className="font-heading text-lg font-semibold text-foreground">
-                  Instagram
-                </h4>
-                <p className="font-body text-sm text-muted-foreground">
-                  @fakeynails
-                </p>
+                <h4 className="font-heading text-lg font-semibold text-foreground">Instagram</h4>
+                <p className="font-body text-sm text-muted-foreground">@fakeynails</p>
               </div>
             </div>
           </div>
@@ -133,12 +113,12 @@ export default function Contact() {
               </label>
               <input
                 type="text"
-                className={`${inputBase} ${errors.name ? "border-destructive" : ""}`}
+                className={`${inputBase} ${errors.name ? 'border-destructive' : ''}`}
                 placeholder="Ditt namn"
                 aria-invalid={!!errors.name}
-                {...register("name", {
-                  required: "Skriv ditt namn.",
-                  minLength: { value: 2, message: "Minst 2 tecken." },
+                {...register('name', {
+                  required: 'Skriv ditt namn.',
+                  minLength: { value: 2, message: 'Minst 2 tecken.' },
                 })}
               />
               {errors.name && (
@@ -152,15 +132,15 @@ export default function Contact() {
               </label>
               <input
                 type="tel"
-                className={`${inputBase} ${errors.phone ? "border-destructive" : ""}`}
+                className={`${inputBase} ${errors.phone ? 'border-destructive' : ''}`}
                 placeholder="07X-XXX XX XX"
                 aria-invalid={!!errors.phone}
-                {...register("phone", {
-                  required: "Skriv ditt telefonnummer.",
+                {...register('phone', {
+                  required: 'Skriv ditt telefonnummer.',
                   // Enkel svensk-mobil regex: 07 + 8 siffror (tillåter mellanslag och bindestreck)
                   pattern: {
                     value: /^07\d(?:[\s-]?\d){7}$/,
-                    message: "Skriv ett giltigt mobilnummer (t.ex. 070-123 45 67).",
+                    message: 'Skriv ett giltigt mobilnummer (t.ex. 070-123 45 67).',
                   },
                 })}
               />
@@ -175,13 +155,13 @@ export default function Contact() {
               </label>
               <textarea
                 rows={4}
-                className={`${inputBase} resize-none ${errors.message ? "border-destructive" : ""}`}
+                className={`${inputBase} resize-none ${errors.message ? 'border-destructive' : ''}`}
                 placeholder="Vilken behandling önskar du?"
                 aria-invalid={!!errors.message}
-                {...register("message", {
-                  required: "Skriv ett meddelande.",
-                  minLength: { value: 10, message: "Skriv minst 10 tecken." },
-                  maxLength: { value: 1000, message: "Max 1000 tecken." },
+                {...register('message', {
+                  required: 'Skriv ett meddelande.',
+                  minLength: { value: 10, message: 'Skriv minst 10 tecken.' },
+                  maxLength: { value: 1000, message: 'Max 1000 tecken.' },
                 })}
               />
               {errors.message && (
@@ -194,7 +174,7 @@ export default function Contact() {
               disabled={isSubmitting}
               className="w-full bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-wider py-3.5 rounded-full hover:opacity-90 transition-opacity duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Skickar..." : "Skicka Meddelande"}
+              {isSubmitting ? 'Skickar...' : 'Skicka Meddelande'}
             </button>
 
             {isSubmitSuccessful && !serverError && (
@@ -202,9 +182,7 @@ export default function Contact() {
                 Tack! Ditt meddelande är skickat.
               </p>
             )}
-            {serverError && (
-              <p className="text-sm text-destructive text-center">{serverError}</p>
-            )}
+            {serverError && <p className="text-sm text-destructive text-center">{serverError}</p>}
           </form>
         </div>
       </div>

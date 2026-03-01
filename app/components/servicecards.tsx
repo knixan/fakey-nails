@@ -1,65 +1,64 @@
-import Image from "next/image"
-import { client } from "@/sanity/lib/client"
-import { urlFor } from "@/sanity/lib/image"
+import Image from 'next/image';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
 
 // use public folder URLs rather than importing assets; Next.js will serve them statically
-const acrylicImgSrc = "/acrylic.webp"
-const gelNailsImgSrc = "/gelnails.webp"
-const gellackImgSrc = "/gellack.webp"
+const acrylicImgSrc = '/acrylic.webp';
+const gelNailsImgSrc = '/gelnails.webp';
+const gellackImgSrc = '/gellack.webp';
 
 type SanityService = {
-  _id: string
-  title: string
-  description?: string
-  image?: { asset: { _ref: string } }
-}
+  _id: string;
+  title: string;
+  description?: string;
+  image?: { asset: { _ref: string } };
+};
 
 type Service = {
-  title: string
-  description: string
-  image: string
-}
+  title: string;
+  description: string;
+  image: string;
+};
 
 const defaultServices: Service[] = [
   {
-    title: "Akrylnaglar",
+    title: 'Akrylnaglar',
     description:
-      "Hållbara och vackra akrylnaglar i valfri form och längd. Perfekta för dig som vill ha starka, eleganta naglar.",
+      'Hållbara och vackra akrylnaglar i valfri form och längd. Perfekta för dig som vill ha starka, eleganta naglar.',
     image: acrylicImgSrc,
   },
   {
-    title: "Gelnaglar",
+    title: 'Gelnaglar',
     description:
-      "Naturligt utseende med gelförstärkning som ger dina naglar extra styrka och en fantastisk glans.",
+      'Naturligt utseende med gelförstärkning som ger dina naglar extra styrka och en fantastisk glans.',
     image: gelNailsImgSrc,
   },
   {
-    title: "Gellack & Manikyr",
+    title: 'Gellack & Manikyr',
     description:
-      "Långvarig gellack med fantastisk hållbarhet. Kombinera med en avkopplande manikyrbehandling.",
+      'Långvarig gellack med fantastisk hållbarhet. Kombinera med en avkopplande manikyrbehandling.',
     image: gellackImgSrc,
   },
-]
+];
 
 async function getServices(): Promise<SanityService[]> {
-  return client.fetch(
-    `*[_type == "service"] | order(order asc)`,
-    {},
-    { next: { revalidate: 60 } }
-  )
+  return client.fetch(`*[_type == "service"] | order(order asc)`, {}, { next: { revalidate: 60 } });
 }
 
 export default async function ServiceCards() {
-  const raw = await getServices()
+  const raw = await getServices();
 
   // Use Sanity data if available, otherwise fall back to hardcoded defaults
-  const services: Service[] = raw.length > 0
-    ? raw.map((s, i) => ({
-        title: s.title,
-        description: s.description ?? "",
-        image: s.image ? urlFor(s.image).width(800).height(800).url() : defaultServices[i]?.image ?? acrylicImgSrc,
-      }))
-    : defaultServices
+  const services: Service[] =
+    raw.length > 0
+      ? raw.map((s, i) => ({
+          title: s.title,
+          description: s.description ?? '',
+          image: s.image
+            ? urlFor(s.image).width(800).height(800).url()
+            : (defaultServices[i]?.image ?? acrylicImgSrc),
+        }))
+      : defaultServices;
 
   return (
     <section id="tjanster" className="py-24 px-4 bg-background">
@@ -100,10 +99,10 @@ export default async function ServiceCards() {
                   </p>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

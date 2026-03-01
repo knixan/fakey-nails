@@ -1,34 +1,34 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ModeToggle } from "./toggle-theme-button"
+import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ModeToggle } from './toggle-theme-button';
 
 type NavLink = {
-  label: string
-  href: string
-}
+  label: string;
+  href: string;
+};
 
 const navLinks: NavLink[] = [
-  { label: "Hem", href: "#hem" },
-  { label: "Tjänster", href: "#tjanster" },
-  { label: "Priser", href: "#priser" },
-  { label: "Kontakt", href: "#kontakt" },
-]
+  { label: 'Hem', href: '#hem' },
+  { label: 'Tjänster', href: '#tjanster' },
+  { label: 'Priser', href: '#priser' },
+  { label: 'Kontakt', href: '#kontakt' },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   function toggleMenu() {
     setIsOpen(function (prev) {
-      return !prev
-    })
+      return !prev;
+    });
   }
 
   function closeMenu() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   return (
@@ -54,7 +54,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               </li>
-            )
+            );
           })}
 
           <li>
@@ -95,7 +95,7 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 </li>
-              )
+              );
             })}
 
             <li>
@@ -113,5 +113,5 @@ export default function Navbar() {
         </div>
       ) : null}
     </nav>
-  )
+  );
 }

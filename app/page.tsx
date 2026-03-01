@@ -1,10 +1,10 @@
-import Navbar from "./components/navbar"
-import Hero from "./components/hero"
-import ServiceCards from "./components/servicecards"
-import PriceCards from "./components/pricecards"
-import Contact from "./components/contact"
-import Footer from "./components/footer"
-import Booking from "./components/booking"
+import Navbar from './components/navbar';
+import Hero from './components/hero';
+import ServiceCards from './components/servicecards';
+import PriceCards from './components/pricecards';
+import Contact from './components/contact';
+import Footer from './components/footer';
+import Booking from './components/booking';
 
 export default function Page() {
   return (
@@ -22,5 +22,5 @@ export default function Page() {
 
       <Footer />
     </>
-  )
+  );
 }

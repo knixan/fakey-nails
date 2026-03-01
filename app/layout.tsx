@@ -1,11 +1,11 @@
-import "./globals.css"
-import type { Metadata } from "next"
-import { ThemeProvider } from "./components/theme-provider"
+import './globals.css';
+import type { Metadata } from 'next';
+import { ThemeProvider } from './components/theme-provider';
 
 export const metadata: Metadata = {
-  title: "Fakey Nails",
-  description: "Professionell nagelstudio i Stockholm.",
-}
+  title: 'Fakey Nails',
+  description: 'Professionell nagelstudio i Stockholm.',
+};
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
@@ -14,5 +14,5 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         <ThemeProvider>{props.children}</ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
