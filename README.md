@@ -7,15 +7,19 @@ En modern marknadsföringssajt för en fiktiv nagelsalong. Byggd med aktuella we
 ## Skärmdumpar
 
 ### Startsida
+
 ![Startsida](public/mockups/landingpage.png)
 
 ### Desktop – ljust läge
+
 ![Desktop ljust läge](public/mockups/fullpage-desktop-lightmode.png)
 
 ### Desktop – mörkt läge
+
 ![Desktop mörkt läge](public/mockups/fullpage-desktop-darkmode.png)
 
 ### Mobil
+
 <p align="center">
   <img src="public/mockups/mobile-light.png" alt="Mobil ljust läge" width="45%" />
   <img src="public/mockups/mobile-dark.png" alt="Mobil mörkt läge" width="45%" />
@@ -32,18 +36,20 @@ En modern marknadsföringssajt för en fiktiv nagelsalong. Byggd med aktuella we
 - **Sanity CMS** för redigerbart innehåll (gratisnivå)
 - Statisk generering med inkrementell revalidering (60 s)
 - Kontaktformulär med **react-hook-form** + **Nodemailer** via API-route
+- Kodstil hanteras av **ESLint** + **Prettier**, automatisk formatering vid sparande (VS Code)
+
 
 ## Teknikstack
 
-| Syfte           | Teknologi                       |
-|-----------------|---------------------------------|
-| Ramverk         | Next.js 16 (React 19)           |
-| Styling         | Tailwind CSS v4 + shadcn/ui     |
-| Ikoner          | lucide-react                    |
-| Formulär        | react-hook-form                 |
-| E-post          | Nodemailer (via `/api/contact`) |
-| CMS             | Sanity (studio på `/studio`)    |
-| Driftsättning   | Vercel (rekommenderat)          |
+| Syfte         | Teknologi                       |
+| ------------- | ------------------------------- |
+| Ramverk       | Next.js 16 (React 19)           |
+| Styling       | Tailwind CSS v4 + shadcn/ui     |
+| Ikoner        | lucide-react                    |
+| Formulär      | react-hook-form                 |
+| E-post        | Nodemailer (via `/api/contact`) |
+| CMS           | Sanity (studio på `/studio`)    |
+| Driftsättning | Vercel (rekommenderat)          |
 
 ## Projektstruktur
 
@@ -62,6 +68,7 @@ sanity/
 ## Kom igång lokalt
 
 1. **Klona repot** och installera beroenden:
+
    ```bash
    git clone https://github.com/knixan/fakey-nails.git
    cd fakey-nails
@@ -71,6 +78,7 @@ sanity/
 2. **Miljövariabler** – skapa en `.env.local` i rooten (se exempel nedan).
 
 3. **Starta utvecklingsservern**:
+
    ```bash
    npm run dev
    ```
@@ -100,7 +108,7 @@ SMTP_PASS=ditt-app-lösenord
 CONTACT_EMAIL=din@gmail.com
 ```
 
-> **Gmail-tips:** Använd ett *App Password* (inte ditt vanliga lösenord).
+> **Gmail-tips:** Använd ett _App Password_ (inte ditt vanliga lösenord).
 > Aktivera det under Google-kontot → Säkerhet → Tvåstegsverifiering → App-lösenord.
 
 ## Redigera innehåll
@@ -113,8 +121,6 @@ Använd Sanity Studio för att ändra:
 
 Nytt innehåll hämtas vid varje bygge och löpande under körning. Kör `npm run build` för att generera med helt färskt innehåll inför en driftsättning.
 
-## Driftsättning
+## Kod och Design
 
-Repot är Vercel-klart – importera projektet så identifieras Next.js-ramverket automatiskt.
-
-Lägg till samma miljövariabler i Vercel-dashboardens inställningar. Sanity Studio serveras automatiskt under `/studio` tack vare `basePath`-konfigurationen.
+Josefine Eriksson https://kodochdesign.se
