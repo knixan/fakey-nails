@@ -60,6 +60,7 @@ export default function Footer() {
           <p className="font-body text-xs text-background/60">
             © {new Date().getFullYear()} Fakey Nails. Alla rättigheter förbehållna.
           </p>
+          <a href="https://kodochdesign.se" target="_blank" className="text-primary hover:underline">Kod och Design </a> <p className="font-body text-xs text-background/60">av Josefine Eriksson</p>
         </div>
 
       </div>
