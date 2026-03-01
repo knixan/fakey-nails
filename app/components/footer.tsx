@@ -12,8 +12,8 @@ export default function Footer() {
               Fakey <span className="text-primary">Nails</span>
             </h3>
             <p className="font-body text-sm text-background/70 max-w-xs mx-auto md:mx-0">
-              Professionell nagelstudio i hjärtat av Stockholm. Boka din behandling idag och upplev
-              skillnaden.
+              Påhittad nagelstudio som är skapad för att demonstrera en webbapplikation byggd med
+              Next.js, Sanity och Tailwind CSS.
             </p>
           </div>
 
