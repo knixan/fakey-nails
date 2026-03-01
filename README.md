@@ -38,7 +38,6 @@ En modern marknadsföringssajt för en fiktiv nagelsalong. Byggd med aktuella we
 - Kontaktformulär med **react-hook-form** + **Nodemailer** via API-route
 - Kodstil hanteras av **ESLint** + **Prettier**, automatisk formatering vid sparande (VS Code)
 
-
 ## Teknikstack
 
 | Syfte         | Teknologi                       |
