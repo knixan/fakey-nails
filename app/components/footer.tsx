@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram, MapPin, Phone } from 'lucide-react';
+import { Instagram, Facebook, MapPin, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -38,11 +38,18 @@ export default function Footer() {
 
             <div className="flex items-center justify-center md:justify-start gap-3">
               <Link
-                href="https://instagram.com"
+                href="https://instagram.com/kodochdesign"
                 target="_blank"
                 className="bg-primary/10 p-2 rounded-full hover:bg-primary/20 transition"
               >
                 <Instagram size={18} className="text-primary" />
+              </Link>
+              <Link
+                href="https://facebook.com/fakeynails"
+                target="_blank"
+                className="bg-primary/10 p-2 rounded-full hover:bg-primary/20 transition"
+              >
+                <Facebook size={18} className="text-primary" />
               </Link>
             </div>
           </div>
