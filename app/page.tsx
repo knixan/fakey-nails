@@ -1,6 +1,7 @@
 import Navbar from './components/navbar';
 import Hero from './components/hero';
 import ServiceCards from './components/servicecards';
+import Gallery from './components/gallery';
 import PriceCards from './components/pricecards';
 import Contact from './components/contact';
 import Footer from './components/footer';
@@ -15,6 +16,7 @@ export default function Page() {
       <main className="pt-20">
         <Hero />
         <ServiceCards />
+        <Gallery />
         <PriceCards />
         <Booking />
         <Contact />
