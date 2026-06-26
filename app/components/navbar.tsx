@@ -37,7 +37,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
         <Link href="#hem" className="flex items-center text-foreground" onClick={closeMenu}>
           <Image
-            src="/loggo.png"
+            src="/fakey_nails_logo.png"
             alt="Fakey Nails logga"
             width={120}
             height={32}
