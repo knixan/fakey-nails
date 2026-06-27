@@ -8,7 +8,7 @@ En modern marknadsföringssajt för en fiktiv nagelsalong. Byggd med aktuella we
 
 ### Startsida
 
-![Startsida](public/mockups/landingpage.png)
+![Startsida](public/mockups/fakey-nails.png)
 
 ### Desktop – ljust läge
 
@@ -17,13 +17,6 @@ En modern marknadsföringssajt för en fiktiv nagelsalong. Byggd med aktuella we
 ### Desktop – mörkt läge
 
 ![Desktop mörkt läge](public/mockups/fullpage-desktop-darkmode.png)
-
-### Mobil
-
-<p align="center">
-  <img src="public/mockups/mobile-light.png" alt="Mobil ljust läge" width="45%" />
-  <img src="public/mockups/mobile-dark.png" alt="Mobil mörkt läge" width="45%" />
-</p>
 
 ---
 
