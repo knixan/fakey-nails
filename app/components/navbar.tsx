@@ -35,15 +35,18 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <Link href="#hem" className="flex items-center text-foreground" onClick={closeMenu}>
+        <Link href="#hem" className="flex items-center gap-3 text-foreground" onClick={closeMenu}>
           <Image
-            src="/fakey_nails_logo.png"
+            src="/fakey-nails-loggo.png"
             alt="Fakey Nails logga"
             width={120}
             height={32}
             className="h-18 w-auto"
             priority
           />
+          <span className="font-heading text-2xl font-bold leading-none">
+            Fakey <span className="text-primary italic">Nails</span>
+          </span>
         </Link>
 
         {/* Desktop */}
